@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 from ..models import WordTest
 from check.models import StudentRegister
 from ..forms import WordTestForm
@@ -78,6 +79,7 @@ def word_modify(request, data_id):
         form = WordTestForm(instance=month_data)
     context = {'form': form, 'data': data, 'student': student, 'month_data': month_data}
     return render(request, 'manager/word/word_form.html', context)
+@require_POST
 def word_delete(request, data_id):
     data = get_object_or_404(WordTest, id=data_id)
     student_id = data.student_id

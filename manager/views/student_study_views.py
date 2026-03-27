@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
+from django.views.decorators.http import require_POST
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from ..models import Student_Study_Data, Average_Study_Data
@@ -136,6 +137,7 @@ def planner_modify(request, data_id):
     context = {'form': form, 'data': data, 'student': student, 'week_data': week_data}
     return render(request, 'manager/student_study/student_study_form.html', context)
 
+@require_POST
 def planner_delete(request, data_id):
     week_data = get_object_or_404(Student_Study_Data, id=data_id)
     student_id = week_data.user_id

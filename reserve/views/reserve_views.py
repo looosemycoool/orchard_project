@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 
 from django.shortcuts import render, get_object_or_404, redirect
 from ..models import Reserve, Teacher, Notice
@@ -22,6 +23,7 @@ def reserve(request, reserve_id):
 
 
 @login_required(login_url='common:login')
+@require_POST
 def reserve_delete(request, reserve_id):
     reserve = Reserve.objects.get(id=reserve_id)
     reserve.student_name = None

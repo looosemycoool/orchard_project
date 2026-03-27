@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
+from django.views.decorators.http import require_POST
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from ..models import Student_Study_Data, WeekPlan
@@ -179,6 +180,7 @@ def weekplan_modify(request, data_id):
     context = {'form': form, 'data': data, 'student': student, 'week_data': week_data}
     return render(request, 'manager/weekplan/weekplan_form.html', context)
 
+@require_POST
 def weekplan_delete(request, data_id):
     week_data = get_object_or_404(WeekPlan, id=data_id)
     student_id = week_data.user_id

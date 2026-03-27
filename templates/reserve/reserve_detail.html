@@ -36,7 +36,7 @@
                                             <a href="{% url 'reserve:complete' r.id %}" class="btn btn-primary">예약</a>
                                         {% else %}
                                             {% if r.student_name == user or user.is_staff %}
-                                                <a href="{% url 'reserve:delete' r.id %}" class="btn btn-danger">취소</a>
+                                                <form method="post" action="{% url 'reserve:delete' r.id %}" style="display:inline">{% csrf_token %}<button type="submit" class="btn btn-danger">취소</button></form>
                                             {% else %}
                                                 <button type="button" class="btn btn-secondary" disabled>예약</button>
                                             {% endif %}

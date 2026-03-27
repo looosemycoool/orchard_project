@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
+from django.views.decorators.http import require_POST
 from ..models import ConsultingReport
 from check.models import StudentRegister
 from ..forms import ConsultingReportForm
@@ -78,6 +79,7 @@ def consulting_modify(request, data_id):
         form = ConsultingReportForm(instance=month_data)
     context = {'form': form, 'data': data, 'student': student, 'month_data': month_data}
     return render(request, 'manager/consulting/consulting_form.html', context)
+@require_POST
 def consulting_delete(request, data_id):
     data = get_object_or_404(ConsultingReport, id=data_id)
     student_id = data.student_id

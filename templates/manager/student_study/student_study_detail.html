@@ -99,7 +99,7 @@
                             </div>
                         {% for data in filtered_data %}
                             <a href="{% url 'manager:planner_modify' data.id %}" class="btn btn-outline-warning">수정하기</a>
-                            <a href="{% url 'manager:planner_delete' data.id %}" class="btn btn-danger">삭제하기</a>
+                            <form method="post" action="{% url 'manager:planner_delete' data.id %}" style="display:inline">{% csrf_token %}<button type="submit" class="btn btn-danger">삭제하기</button></form>
                         {% endfor %}
                         </div>
                     {% endif %}
