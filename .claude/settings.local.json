@@ -5,7 +5,8 @@
       "Bash(find /c/Users/yhm19/orchard_project -name *.js -o -name static -type d)",
       "Bash(find /c/Users/yhm19/orchard_project/templates -name *planner* -o -name *reserve*)",
       "Bash(grep -r \"highcharts\\\\|Highcharts\\\\|code\\\\.highcharts\" /c/Users/yhm19/orchard_project/templates --include=*.html -n)",
-      "Bash(xargs cat:*)"
+      "Bash(xargs cat:*)",
+      "WebSearch"
     ]
   }
 }
